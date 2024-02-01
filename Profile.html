@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Page Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+        }
+
+        header {
+            background-color: #3498db;
+            padding: 20px;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            height: 50px;
+        }
+
+        header img {
+            width: 50px;
+            margin-right: 10px;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        nav {
+            margin-left: auto; /* Push the navigation to the right */
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        nav ul li {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        nav ul ul {
+            display: none;
+            position: absolute;
+            top: 100%;
+            background-color: #3498db;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            width: 250px;
+
+            opacity: 0;
+        transform: translateY(10px);
+        animation: fadeInUp 0.5s ease-out forwards;
+    }
+
+    @keyframes fadeInUp {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    nav ul ul li {
+        opacity: 0;
+        animation: fadeInUpLi 0.3s ease-out forwards;
+    }
+
+    @keyframes fadeInUpLi {
+        to {
+            opacity: 1;
+        }
+    }
+        nav ul li.active > ul {
+            display: flex;
+            flex-direction: column;
+            margin-top: 5px; /* Adjust the margin to align submenu with userbox */
+        }
+
+        nav ul ul li {
+            display: flex;
+            align-items: center;
+            background-color: white;
+            height: 40px; /* Set the height of submenu items */
+        }
+
+        nav ul ul li a {
+            color: black;
+            text-decoration: none;
+            padding: 10px;
+            margin: 0;
+            display: flex;
+            align-items: center;
+        }
+
+        nav ul ul li.logout {
+            
+            cursor: pointer;
+        }
+
+
+
+        nav ul li .user-box {
+            background-color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            cursor: pointer; /* Add cursor pointer for better user interaction */
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #fff;
+            margin-right: 27px;
+        }
+
+        nav ul li .user-box a {
+            color: black;
+        }
+
+        nav ul li img {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            margin-right: 5px;
+        }
+
+        .caret-icon {
+        position: absolute;
+        top: 50%;
+        right: 10px; /* Adjust the right value as needed */
+        transform: translateY(-50%);
+        color: black; /* Set the color of the caret icon */
+        font-size: 10px; /* Set the font size of the caret icon */
+        cursor: pointer;
+    }
+
+    .row {
+        height: 100vh;
+    }
+
+    
+    .leftsection {
+    
+    display: flex;
+    align-items: center; /* Center the content vertically */
+    flex-direction: column; /* Align children vertically */
+    height: 100%;
+}
+
+        .profile-picture-container {
+        width: 100px; /* Adjust the width as needed */
+        height: auto; /* Adjust the height as needed */
+        overflow: hidden;
+        border-radius: 50%; /* Make it circular */
+        margin-top: 20px; /* Adjust the margin as needed */
+
+    }
+
+    .profile-picture {
+        width: 100%;
+        height: auto;
+        border-radius: 50%; /* Make it circular */
+    }
+
+
+
+
+
+        .qr-code-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 50%; /* Adjust the height as needed */
+        background-color: lightgray; /* Add a background color or styling as desired */
+        padding: 20px; /* Add padding to the container */
+        border-radius: 10px; /* Add border radius for rounded corners */
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
+        margin-top: 20px;
+    }
+
+    .qr-code-container img {
+        max-width: 100%;
+        max-height: 100%;
+    }
+
+        .profile-nav{
+        z-index: 999;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <img src="images/qculogo.png" alt="Your Logo">
+        <h1>Quezon City University</h1>
+        <nav class="profile-nav">
+            <ul>
+                <li>
+                    <a href="#">Home</a>
+                    <div class="user-box" onclick="toggleSubMenu(this)">
+                        <img src="images/Nella.PNG" alt="Profile Picture">
+                        <a href="#">Nella Sablada</a>
+                        <span class="caret-icon">&#x25B2;</span>
+                    </div>
+                    <!-- Submenu for "Home" -->
+                    <ul>
+                        <li class="profile-picture">
+                            <a href="#" >
+                                <img src="images/Nella.PNG" alt="Profile Picture">
+                                nellasablada@tanga.com
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" >
+                                <img class="profile-icon" src="images/profile.png" alt="Profile Icon">
+                                Profile
+                            </a>
+                        </li>
+                        <li class="logout" onclick="logout()">
+                            <!-- Add parentheses after 'logout' to make it a function call -->
+                            <a href="#">
+                                <img src="images/logout.png" alt="Logout Icon">
+                                Logout
+                            </a>
+                        </li>
+                        <!-- Add more submenu items as needed -->
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="Main-section container-fluid">
+        <div class="row">
+            <!-- Left Section -->
+            <div class="col-md-4 leftsection">
+                <div class="profile-picture-container">
+                    <img class="profile-picture" src="images/Nella.PNG" alt="Profile Picture">
+                    
+                </div>
+            </div>
+
+            <!-- Middle Section -->
+            <div class="col-md-4 middlesection">
+                <p>FULLNAME: RICHARD MERCADAL</p>
+                <p>SECTION: H</p>
+                <p>Student Number: 20-XXXX</p>
+            </div>
+
+            <!-- Right Section -->
+            <div class="col-md-4 rightsection">
+                <div class="qr-code-container">
+                    <!-- Add your QR code image here -->
+                    <img src="path/to/your/qr-code.png" alt="QR Code">
+            </div>
+        </div>
+    </div>
+
+     
+
+   
+
+    <script>
+        function toggleSubMenu(element) {
+            var parentLi = element.parentNode;
+            var caretIcon = element.querySelector('.caret-icon');
+    
+            if (parentLi.classList.contains("active")) {
+                parentLi.classList.remove("active");
+                caretIcon.innerHTML = '&#x25B2;'; // Change to up-caret
+            } else {
+                // Close other open submenus if needed
+                var allLis = document.querySelectorAll('nav ul li');
+                for (var i = 0; i < allLis.length; i++) {
+                    allLis[i].classList.remove("active");
+                }
+                parentLi.classList.add("active");
+                caretIcon.innerHTML = '&#x25BC;'; // Change to down-caret
+            }
+    
+           
+        }
+    
+
+    
+        function logout() {
+            alert("Logout clicked!");
+        }
+    </script>
+    
+
+</body>
+</html>
